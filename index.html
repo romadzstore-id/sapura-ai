@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nexus AI | Premium Artificial Intelligence</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>">
+</head>
+<body>
+    <div class="container">
+        <!-- Sidebar (desktop) -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <div class="logo-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <div class="logo-text">
+                        <h1>Nexus AI</h1>
+                        <p class="subtitle">Premium Artificial Intelligence</p>
+                    </div>
+                </div>
+                <button class="new-chat-btn" id="newChatBtn">
+                    <i class="fas fa-plus"></i> Chat Baru
+                </button>
+            </div>
+            
+            <div class="chat-history">
+                <h3 class="section-title">Riwayat Chat</h3>
+                <div class="history-list" id="historyList">
+                    <!-- Riwayat chat akan dimuat di sini -->
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="profile-icon">
+                    <i class="fas fa-user-circle"></i>
+                </div>
+                <div class="profile-info">
+                    <span class="profile-name">Pengguna</span>
+                    <span class="profile-status">Online</span>
+                </div>
+                <button class="settings-btn" id="settingsBtn">
+                    <i class="fas fa-cog"></i>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="main-content">
+            <!-- Top Navigation (mobile) -->
+            <div class="mobile-nav">
+                <button class="menu-btn" id="menuBtn">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <div class="mobile-logo">
+                    <i class="fas fa-brain"></i>
+                    <h2>Nexus AI</h2>
+                </div>
+                <button class="new-chat-btn-mobile" id="newChatBtnMobile">
+                    <i class="fas fa-plus"></i>
+                </button>
+            </div>
+
+            <!-- Chat Container -->
+            <div class="chat-container" id="chatContainer">
+                <!-- Pesan awal saat belum ada chat -->
+                <div class="welcome-screen" id="welcomeScreen">
+                    <div class="welcome-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h2>Selamat Datang di Nexus AI</h2>
+                    <p>Asisten AI cerdas untuk membantu menyelesaikan berbagai tugas dan pertanyaan Anda.</p>
+                    
+                    <div class="quick-actions">
+                        <h3>Mulai percakapan dengan contoh:</h3>
+                        <div class="example-questions">
+                            <button class="example-btn" data-question="Buatkan rencana bisnis sederhana untuk startup teknologi">
+                                <i class="fas fa-lightbulb"></i> Rencana bisnis startup
+                            </button>
+                            <button class="example-btn" data-question="Jelaskan konsep machine learning dengan bahasa yang sederhana">
+                                <i class="fas fa-cogs"></i> Apa itu machine learning?
+                            </button>
+                            <button class="example-btn" data-question="Bantu saya menulis email profesional untuk pengajuan kerja">
+                                <i class="fas fa-envelope"></i> Tulis email profesional
+                            </button>
+                            <button class="example-btn" data-question="Bagaimana cara meningkatkan produktivitas kerja sehari-hari?">
+                                <i class="fas fa-chart-line"></i> Tips produktivitas
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="features">
+                        <h3>Kemampuan Nexus AI</h3>
+                        <div class="feature-grid">
+                            <div class="feature-card">
+                                <i class="fas fa-comment-dots"></i>
+                                <h4>Percakapan Cerdas</h4>
+                                <p>Berinteraksi layaknya asisten manusia</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-code"></i>
+                                <h4>Penulisan Kode</h4>
+                                <p>Bantu membuat dan debug kode program</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-pen-fancy"></i>
+                                <h4>Kreativitas</h4>
+                                <p>Menulis konten, puisi, dan ide kreatif</p>
+                            </div>
+                            <div class="feature-card">
+                                <i class="fas fa-graduation-cap"></i>
+                                <h4>Pembelajaran</h4>
+                                <p>Jelaskan konsep kompleks dengan sederhana</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Chat messages akan ditambahkan di sini -->
+            </div>
+
+            <!-- Input Area -->
+            <div class="input-area">
+                <div class="input-container">
+                    <div class="input-wrapper">
+                        <textarea 
+                            id="messageInput" 
+                            placeholder="Tanyakan apa saja kepada Nexus AI..." 
+                            rows="1"
+                            autocomplete="off"
+                        ></textarea>
+                        <button class="send-btn" id="sendBtn">
+                            <i class="fas fa-paper-plane"></i>
+                        </button>
+                    </div>
+                    <div class="input-footer">
+                        <p class="disclaimer">
+                            <i class="fas fa-info-circle"></i>
+                            Nexus AI dapat membuat kesalahan. Periksa informasi penting.
+                        </p>
+                        <div class="input-options">
+                            <button class="option-btn" id="voiceInputBtn" title="Input suara">
+                                <i class="fas fa-microphone"></i>
+                            </button>
+                            <button class="option-btn" id="attachFileBtn" title="Lampirkan file">
+                                <i class="fas fa-paperclip"></i>
+                            </button>
+                            <button class="option-btn" id="themeToggleBtn" title="Ubah tema">
+                                <i class="fas fa-moon"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modals -->
+    <div class="modal-overlay" id="modalOverlay">
+        <div class="modal" id="settingsModal">
+            <div class="modal-header">
+                <h3>Pengaturan</h3>
+                <button class="modal-close" id="closeSettingsModal">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="setting-item">
+                    <h4>Mode Tema</h4>
+                    <div class="theme-options">
+                        <button class="theme-option active" data-theme="dark">
+                            <i class="fas fa-moon"></i> Gelap
+                        </button>
+                        <button class="theme-option" data-theme="light">
+                            <i class="fas fa-sun"></i> Terang
+                        </button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <h4>Kecepatan Respons</h4>
+                    <div class="speed-options">
+                        <button class="speed-option active" data-speed="fast">
+                            Cepat
+                        </button>
+                        <button class="speed-option" data-speed="normal">
+                            Normal
+                        </button>
+                        <button class="speed-option" data-speed="slow">
+                            Lambat (Detail)
+                        </button>
+                    </div>
+                </div>
+                <div class="setting-item">
+                    <h4>Riwayat Chat</h4>
+                    <button class="btn-secondary" id="clearHistoryBtn">
+                        <i class="fas fa-trash"></i> Hapus Semua Riwayat
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Typing Indicator -->
+    <div class="typing-indicator" id="typingIndicator">
+        <div class="typing-dots">
+            <div class="dot"></div>
+            <div class="dot"></div>
+            <div class="dot"></div>
+        </div>
+        <p>Nexus AI sedang mengetik...</p>
+    </div>
+
+    <footer class="footer">
+        <p>© 2025 Nexus AI. Premium Artificial Intelligence.</p>
+        <div class="footer-links">
+            <a href="#" class="footer-link">Privasi</a>
+            <a href="#" class="footer-link">Syarat Layanan</a>
+            <a href="#" class="footer-link">Kontak</a>
+        </div>
+    </footer>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
